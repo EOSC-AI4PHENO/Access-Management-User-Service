@@ -1,0 +1,31 @@
+app:
+  keycloak:
+    url: https://keycloak.siseth.com/realms/{{realm}}/protocol/openid-connect/
+    url-admin: https://keycloak.siseth.com/admin/realms/{{realm}}/
+    realms:
+      - name: spring-boot-eosc-realm
+        client-id: xxxxxx
+        client-secret: xxxxxx
+
+
+server:
+  port: 6003
+  error:
+    include-message: always
+
+springdoc:
+  api-docs:
+    path: /api/access/users/v3/api-docs
+
+eureka:
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
+
+spring:
+  application:
+    name: users-service
